@@ -1,5 +1,4 @@
 <?php
-
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
@@ -8,28 +7,79 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="login-container">
 
-    <p>Please fill out the following fields to login:</p>
+        <div class="row">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                <div class="col-sm-6">
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                        <script type="text/javascript">
+                                jQuery(document).ready(function ($)
+                                {
+                                        setTimeout(function () {
+                                                $(".fade-in-effect").addClass('in');
+                                        }, 1);
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                                });
+                        </script>
+                        <!-- Errors container -->
+                        <div class="errors-container">
+                        </div>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                        <!-- Add class "fade-in-effect" for login form effect -->
+                        <?php
+                        $form = ActiveForm::begin(
+                                        [
+                                            'id' => 'login',
+                                            'method' => 'post',
+                                            'options' => [
+                                                'class' => 'login-form fade-in-effect'
+                                            ]
+                                        ]
+                        );
+                        ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        <div class="login-header">
+                                <a href="" class="logo">
+                                        <?php echo Html::img('@web/images/logo@2x.png') ?>
+                                        <!--<span>Emperor Admin log in</span>-->
+                                </a>
+
+                                <p>Dear user, Please log in to access!</p>
+                        </div>
+
+
+                        <div class="form-group">
+                                <?= $form->field($model, 'user_name')->textInput(['class' => 'form-control input-dark', 'autofocus' => 'true']) ?>
+                        </div>
+
+                        <div class="form-group">
+                                <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control input-dark']) ?>
+                        </div>
+
+                        <div class="form-group">
+                                <?= Html::submitButton('<i class="fa-lock"></i>Log In', ['class' => 'btn btn-dark  btn-block text-left'])
+                                ?>
+
+                        </div>
+
+                        <div class="login-footer">
+                                <a href="<?= Yii::$app->homeUrl; ?>site/forgot">Forgot your password?</a>
+
+
+                                <!--                                <div class="info-links">
+                                                                        <a href="#">ToS</a> -
+                                                                        <a href="#">Privacy Policy</a>
+                                                                </div>-->
+
+                        </div>
+
+                        <?php ActiveForm::end(); ?>
+
+
                 </div>
 
-            <?php ActiveForm::end(); ?>
         </div>
-    </div>
+
 </div>
