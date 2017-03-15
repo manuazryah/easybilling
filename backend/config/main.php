@@ -69,6 +69,8 @@ return [
                 'admin-users/<action>' => 'admin/admin-users/<action>',
                 'country/<action>' => 'masters/country/<action>',
                 'state/<action>' => 'masters/state/<action>',
+                'city/<action>' => 'masters/city/<action>',
+                'company/<action>' => 'company/company/<action>',
             ],
         ],
         'assetManager' => [

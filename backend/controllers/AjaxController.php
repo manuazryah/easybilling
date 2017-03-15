@@ -30,7 +30,7 @@ class AjaxController extends \yii\web\Controller {
                                         echo '0';
                                         exit;
                                 } else {
-                                        $options = '<option value="">-Choose Country-</option>';
+                                        $options = '<option value="">-Choose State-</option>';
                                         foreach ($state_datas as $state_data) {
                                                 $options .= "<option value='" . $state_data->id . "'>" . $state_data->state_name . "</option>";
                                         }
@@ -58,7 +58,7 @@ class AjaxController extends \yii\web\Controller {
                                         echo '0';
                                         exit;
                                 } else {
-                                        $options = '<option value="">-Choose Country-</option>';
+                                        $options = '<option value="">-Choose City-</option>';
                                         foreach ($city_datas as $city_data) {
                                                 $options .= "<option value='" . $city_data->id . "'>" . $city_data->city_name . "</option>";
                                         }

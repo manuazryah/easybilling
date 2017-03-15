@@ -101,7 +101,7 @@ AppAsset::register($this);
                                                         </a>
                                                         <ul>
                                                                 <li>
-                                                                        <?= Html::a('Company Details', ['/company/company-details/index'], ['class' => 'title']) ?>
+                                                                        <?= Html::a('Company Details', ['/company/company/index'], ['class' => 'title']) ?>
                                                                 </li>
                                                         </ul>
                                                 </li>

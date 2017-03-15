@@ -135,3 +135,7 @@ table.table tr td:last-child a {
 .nav.nav-tabs.nav-tabs-justified, .nav-tabs-justified .nav.nav-tabs {
         background-color: #979c9c !important;
 }
+.control-label1{
+        font-weight: bold;
+        color: black;
+}
