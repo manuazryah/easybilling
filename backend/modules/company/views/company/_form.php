@@ -30,18 +30,21 @@ use kartik\datetime\DateTimePicker;
         <div class='col-md-4 col-sm-6 col-xs-12'>
                 <?php
                 echo '<label class="control-label control-label1" for="formation-date">Formation Date</label>';
+                if (!$model->isNewRecord) {
+                        $model->formation_date = date('d-m-Y h:i', strtotime($model->formation_date));
+                } else {
+                        $model->formation_date = date('d-m-Y h:i');
+                }
                 echo DateTimePicker::widget([
                     'name' => 'formation_date',
                     'type' => DateTimePicker::TYPE_INPUT,
-//                    'value' => '23-Feb-1982 10:10',
-                    'value' => date('d-m-Y h:i'),
+                    'value' => $model->formation_date,
                     'pluginOptions' => [
                         'autoclose' => true,
                         'format' => 'dd-M-yyyy hh:ii'
                     ]
                 ]);
                 ?>
-                <?php // $form->field($model, 'formation_date')->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class='col-md-4 col-sm-6 col-xs-12'>

@@ -406,31 +406,23 @@ AppAsset::register($this);
                                                         </a>
 
                                                         <ul class="dropdown-menu user-profile-menu list-unstyled">
+
                                                                 <li>
-                                                                        <a href="<?= Yii::$app->homeUrl; ?>admin/admin-users/change-password?id=<?= Yii::$app->user->identity->id ?>">
-                                                                                <i class="fa-wrench"></i>
-                                                                                Change Password
-                                                                        </a>
+                                                                        <?= Html::a('<i class="fa-wrench"></i>Change Password', ['/admin/admin-users/change-password?id=' . Yii::$app->user->identity->id], ['class' => 'title']) ?>
                                                                 </li>
                                                                 <li>
-                                                                        <a href="<?= Yii::$app->homeUrl; ?>admin/admin-users/update?id=<?= Yii::$app->user->identity->id ?>">
-                                                                                <i class="fa-user"></i>
-                                                                                Profile
-                                                                        </a>
+                                                                        <?= Html::a('<i class="fa-pencil"></i>Edit Profile', ['/admin/admin-users/update?id=' . Yii::$app->user->identity->id], ['class' => 'title']) ?>
                                                                 </li>
-                                                                <!--<li class="last">-->
-                                                                <span>
-                                                                        <?php
-                                                                        echo '<li class="last">'
-                                                                        . Html::beginForm(['/site/logout'], 'post') . '<a>'
-                                                                        . Html::submitButton(
-                                                                                '<i class="fa fa-power-off"></i> Logout (' . Yii::$app->user->identity->user_name . ')', ['class' => 'btn btn-link linker']
-                                                                        ) . '</a>'
-                                                                        . Html::endForm();
-                                                                        ?>
-                                                                        <?php // Yii::$app->user->identity->name   ?>
-                                                                </span>
-                                                                <!--</li>-->
+
+                                                                <?php
+                                                                echo '<li class="last">'
+                                                                . Html::beginForm(['/site/logout'], 'post') . '<a>'
+                                                                . Html::submitButton(
+                                                                        '<i class="fa-lock"></i> Logout', ['class' => 'btn logout_btn']
+                                                                ) . '</a>'
+                                                                . Html::endForm()
+                                                                . '</li>';
+                                                                ?>
                                                         </ul>
                                                 </li>
 

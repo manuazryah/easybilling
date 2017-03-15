@@ -114,7 +114,12 @@ class CompanyController extends Controller {
          * @return mixed
          */
         public function actionDelete($id) {
-                $this->findModel($id)->delete();
+                $model = $this->findModel($id);
+                $path = Yii::$app->basePath . '/../images/companyImages/' . $model->id . '.' . $model->logo;
+                if (file_exists($path)) {
+                        unlink($path);
+                }
+                $model->delete();
 
                 return $this->redirect(['index']);
         }

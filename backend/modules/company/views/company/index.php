@@ -35,6 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'formation_date',
                                                 'currency',
                                                 'tin',
+                                                    [
+                                                    'attribute' => 'logo',
+                                                    'format' => 'raw',
+                                                    'value' => function ($data) {
+
+                                                            $img = '<img width="80px" height="80px" src="' . Yii::$app->homeUrl . '../images/companyImages/' . $data->id . '.' . $data->logo . '"/>';
+
+                                                            return $img;
+                                                    },
+                                                ],
                                                 // 'cst',
                                                 // 'gst',
                                                 // 'pan',
