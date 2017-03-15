@@ -5,10 +5,10 @@ use yii\widgets\DetailView;
 use common\models\AdminUsers;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\PolicyType */
+/* @var $model common\models\Tax */
 
-$this->title = $model->policy_name;
-$this->params['breadcrumbs'][] = ['label' => 'Policy Types', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Taxes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -20,27 +20,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         </div>
                         <div class="panel-body">
-                                <?= Html::a('<i class="fa-th-list"></i><span> Manage Policy Type</span>', ['index'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
-                                <div class="panel-body"><div class="policy-type-view">
+                                <?=  Html::a('<i class="fa-th-list"></i><span> Manage Tax</span>', ['index'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
+                                <div class="panel-body"><div class="tax-view">
                                                 <p>
                                                         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                                                        <?=
-                                                        Html::a('Delete', ['delete', 'id' => $model->id], [
-                                                            'class' => 'btn btn-danger',
-                                                            'data' => [
-                                                                'confirm' => 'Are you sure you want to delete this item?',
-                                                                'method' => 'post',
-                                                            ],
-                                                        ])
-                                                        ?>
+                                                        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+                                                        'class' => 'btn btn-danger',
+                                                        'data' => [
+                                                        'confirm' => 'Are you sure you want to delete this item?',
+                                                        'method' => 'post',
+                                                        ],
+                                                        ]) ?>
                                                 </p>
 
-                                                <?=
-                                                DetailView::widget([
-                                                    'model' => $model,
-                                                    'attributes' => [
-//                                                        'id',
-                                                        'policy_name',
+                                                <?= DetailView::widget([
+                                                'model' => $model,
+                                                'attributes' => [
+//                                                            'id',
+            'name',
+                                                            [
+                                                            'attribute' => 'type',
+                                                            'value' => call_user_func(function($model) {
+                                                                            if ($model->type == 1) {
+                                                                                    return 'Flat';
+                                                                            } else {
+                                                                                    return 'Percentage';
+                                                                            }
+                                                                    }, $model),
+                                                        ],
+                                                        'value',
                                                             [
                                                             'attribute' => 'status',
                                                             'value' => call_user_func(function($model) {
@@ -67,16 +75,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             return AdminUsers::findOne($model->UB)->name;
                                                                     }, $model),
                                                         ],
-                                                        'DOC',
-                                                        'DOU',
-                                                    ],
-                                                ])
-                                                ?>
+            'DOC',
+            'DOU',
+                                                ],
+                                                ]) ?>
+</div>
                                         </div>
                                 </div>
                         </div>
                 </div>
         </div>
-</div>
 
 

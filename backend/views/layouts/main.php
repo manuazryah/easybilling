@@ -113,6 +113,9 @@ AppAsset::register($this);
                                                         </a>
                                                         <ul>
                                                                 <li>
+                                                                        <?= Html::a('Tax', ['/masters/tax/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                                <li>
                                                                         <?= Html::a('Country', ['/masters/country/index'], ['class' => 'title']) ?>
                                                                 </li>
                                                                 <li>

@@ -89,8 +89,8 @@ class Company extends \yii\db\ActiveRecord {
                     'status' => 'Status',
                     'CB' => 'Cb',
                     'UB' => 'Ub',
-                    'DOC' => 'Doc',
-                    'DOU' => 'Dou',
+                    'DOC' => 'Date of Creation',
+                    'DOU' => 'Date of Updation',
                 ];
         }
 
