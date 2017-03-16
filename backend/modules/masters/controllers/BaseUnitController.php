@@ -69,9 +69,7 @@ class BaseUnitController extends Controller {
         public function actionCreate() {
                 $model = new BaseUnit();
 
-                if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model)) {
-                        $model->DOC = date('Y-m-d h:i:s');
-                        if ($model->validate() && $model->save())
+                if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model) && $model->validate() && $model->save()) {
                                 return $this->redirect(['view', 'id' => $model->id]);
                 }
                 return $this->render('update', [

@@ -25,7 +25,7 @@ class SetValues extends Component {
 
                         if ($model->isNewRecord) {
                                 $model->CB = Yii::$app->user->identity->id;
-                                $model->DOC = date('Y-m-d');
+                                $model->DOC = date('Y-m-d h:i:s');
                         }
                         $model->UB = Yii::$app->user->identity->id;
 

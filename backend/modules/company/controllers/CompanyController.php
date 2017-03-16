@@ -14,6 +14,14 @@ use yii\web\UploadedFile;
  * CompanyController implements the CRUD actions for Company model.
  */
 class CompanyController extends Controller {
+        
+        public function init() {
+                if (Yii::$app->user->isGuest)
+                        $this->redirect(['/site/index']);
+
+                if (Yii::$app->session['post']['masters'] != 1)
+                        $this->redirect(['/site/home']);
+        }
 
         /**
          * @inheritdoc

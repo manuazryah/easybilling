@@ -17,7 +17,7 @@ class m170315_044718_country_state_city extends Migration {
                     'status' => $this->smallInteger()->notNull()->defaultValue(1),
                     'CB' => $this->integer()->notNull(),
                     'UB' => $this->integer()->notNull(),
-                    'DOC' => $this->date(),
+                    'DOC' => $this->dateTime(),
                     'DOU' => $this->timestamp(),
                         ], $tableOptions);
                 $this->alterColumn('{{%country}}', 'id', $this->integer() . ' NOT NULL AUTO_INCREMENT');
@@ -29,7 +29,7 @@ class m170315_044718_country_state_city extends Migration {
                     'status' => $this->smallInteger()->notNull()->defaultValue(1),
                     'CB' => $this->integer()->notNull(),
                     'UB' => $this->integer()->notNull(),
-                    'DOC' => $this->date(),
+                    'DOC' => $this->dateTime(),
                     'DOU' => $this->timestamp(),
                         ], $tableOptions);
                 $this->alterColumn('{{%state}}', 'id', $this->integer() . ' NOT NULL AUTO_INCREMENT');
@@ -45,7 +45,7 @@ class m170315_044718_country_state_city extends Migration {
                     'status' => $this->smallInteger()->notNull()->defaultValue(1),
                     'CB' => $this->integer()->notNull(),
                     'UB' => $this->integer()->notNull(),
-                    'DOC' => $this->date(),
+                    'DOC' => $this->dateTime(),
                     'DOU' => $this->timestamp(),
                         ], $tableOptions);
                 $this->alterColumn('{{%city}}', 'id', $this->integer() . ' NOT NULL AUTO_INCREMENT');

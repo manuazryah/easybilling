@@ -19,7 +19,7 @@ class m170315_044304_admin_post extends Migration {
                     'status' => $this->smallInteger()->notNull()->defaultValue(0),
                     'CB' => $this->integer()->notNull(),
                     'UB' => $this->integer()->notNull(),
-                    'DOC' => $this->date(),
+                    'DOC' => $this->dateTime(),
                     'DOU' => $this->timestamp(),
                         ], $tableOptions);
                 $this->alterColumn('{{%admin_posts}}', 'id', $this->integer() . ' NOT NULL AUTO_INCREMENT');
@@ -36,7 +36,7 @@ class m170315_044304_admin_post extends Migration {
                     'status' => $this->smallInteger()->notNull()->defaultValue(0),
                     'CB' => $this->integer()->notNull(),
                     'UB' => $this->integer()->notNull(),
-                    'DOC' => $this->date(),
+                    'DOC' => $this->dateTime(),
                     'DOU' => $this->timestamp(),
                         ], $tableOptions);
                 $this->alterColumn('{{%admin_users}}', 'id', $this->integer() . ' NOT NULL AUTO_INCREMENT');

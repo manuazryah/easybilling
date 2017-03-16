@@ -34,6 +34,9 @@ return [
         'user' => [
             'class' => 'backend\modules\user\Module',
         ],
+        'product' => [
+            'class' => 'backend\modules\product\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -71,6 +74,12 @@ return [
                 'state/<action>' => 'masters/state/<action>',
                 'city/<action>' => 'masters/city/<action>',
                 'company/<action>' => 'company/company/<action>',
+                'business-partner/<action>' => 'company/business-partner/<action>',
+                'salesman/<action>' => 'company/salesman/<action>',
+                'base-unit/<action>' => 'masters/base-unit/<action>',
+                'payment-mode/<action>' => 'masters/payment-mode/<action>',
+                'serial-number/<action>' => 'masters/serial-number/<action>',
+                'tax/<action>' => 'masters/tax/<action>',
             ],
         ],
         'assetManager' => [

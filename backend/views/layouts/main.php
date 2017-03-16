@@ -103,6 +103,24 @@ AppAsset::register($this);
                                                                 <li>
                                                                         <?= Html::a('Company Details', ['/company/company/index'], ['class' => 'title']) ?>
                                                                 </li>
+                                                                <li>
+                                                                        <?= Html::a('Bussiness Partners', ['/company/business-partner/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                                <li>
+                                                                        <?= Html::a('Salesman', ['/company/salesman/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                
+                                                <li class="active opened active">
+                                                        <a href="">
+                                                                <i class="fa fa-suitcase"></i>
+                                                                <span class="title">Product</span>
+                                                        </a>
+                                                        <ul>
+                                                                <li>
+                                                                        <?= Html::a('Item Master', ['/product/item-master/index'], ['class' => 'title']) ?>
+                                                                </li>
                                                         </ul>
                                                 </li>
 

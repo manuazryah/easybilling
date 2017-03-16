@@ -1,24 +1,24 @@
 <?php
 
-namespace backend\modules\masters\controllers;
+namespace backend\modules\product\controllers;
 
 use Yii;
-use common\models\SerialNumber;
-use common\models\SerialNumberSearch;
+use common\models\ItemMaster;
+use common\models\ItemMasterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SerialNumberController implements the CRUD actions for SerialNumber model.
+ * ItemMasterController implements the CRUD actions for ItemMaster model.
  */
-class SerialNumberController extends Controller {
+class ItemMasterController extends Controller {
 
         public function init() {
                 if (Yii::$app->user->isGuest)
                         $this->redirect(['/site/index']);
 
-                if (Yii::$app->session['post']['masters'] != 1)
+                if (Yii::$app->session['post']['admin'] != 1)
                         $this->redirect(['/site/home']);
         }
 
@@ -37,11 +37,11 @@ class SerialNumberController extends Controller {
         }
 
         /**
-         * Lists all SerialNumber models.
+         * Lists all ItemMaster models.
          * @return mixed
          */
         public function actionIndex() {
-                $searchModel = new SerialNumberSearch();
+                $searchModel = new ItemMasterSearch();
                 $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
                 return $this->render('index', [
@@ -51,7 +51,7 @@ class SerialNumberController extends Controller {
         }
 
         /**
-         * Displays a single SerialNumber model.
+         * Displays a single ItemMaster model.
          * @param integer $id
          * @return mixed
          */
@@ -62,23 +62,23 @@ class SerialNumberController extends Controller {
         }
 
         /**
-         * Creates a new SerialNumber model.
+         * Creates a new ItemMaster model.
          * If creation is successful, the browser will be redirected to the 'view' page.
          * @return mixed
          */
         public function actionCreate() {
-                $model = new SerialNumber();
+                $model = new ItemMaster();
 
                 if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model) && $model->validate() && $model->save()) {
-                                return $this->redirect(['view', 'id' => $model->id]);
+                        return $this->redirect(['view', 'id' => $model->id]);
                 }
-                return $this->render('update', [
+                return $this->render('create', [
                             'model' => $model,
                 ]);
         }
 
         /**
-         * Updates an existing SerialNumber model.
+         * Updates an existing ItemMaster model.
          * If update is successful, the browser will be redirected to the 'view' page.
          * @param integer $id
          * @return mixed
@@ -88,15 +88,14 @@ class SerialNumberController extends Controller {
 
                 if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model) && $model->validate() && $model->save()) {
                         return $this->redirect(['view', 'id' => $model->id]);
-                } else {
-                        return $this->render('update', [
-                                    'model' => $model,
-                        ]);
                 }
+                return $this->render('update', [
+                            'model' => $model,
+                ]);
         }
 
         /**
-         * Deletes an existing SerialNumber model.
+         * Deletes an existing ItemMaster model.
          * If deletion is successful, the browser will be redirected to the 'index' page.
          * @param integer $id
          * @return mixed
@@ -108,14 +107,14 @@ class SerialNumberController extends Controller {
         }
 
         /**
-         * Finds the SerialNumber model based on its primary key value.
+         * Finds the ItemMaster model based on its primary key value.
          * If the model is not found, a 404 HTTP exception will be thrown.
          * @param integer $id
-         * @return SerialNumber the loaded model
+         * @return ItemMaster the loaded model
          * @throws NotFoundHttpException if the model cannot be found
          */
         protected function findModel($id) {
-                if (($model = SerialNumber::findOne($id)) !== null) {
+                if (($model = ItemMaster::findOne($id)) !== null) {
                         return $model;
                 } else {
                         throw new NotFoundHttpException('The requested page does not exist.');

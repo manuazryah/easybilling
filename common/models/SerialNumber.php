@@ -17,43 +17,41 @@ use Yii;
  * @property string $DOC
  * @property string $DOU
  */
-class SerialNumber extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'serial_number';
-    }
+class SerialNumber extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['transaction', 'prefix', 'sequence_no', 'status', 'CB', 'UB'], 'integer'],
-            [['transaction'], 'required'],
-            [['DOC', 'DOU'], 'safe'],
-        ];
-    }
+        /**
+         * @inheritdoc
+         */
+        public static function tableName() {
+                return 'serial_number';
+        }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'transaction' => 'Transaction',
-            'prefix' => 'Prefix',
-            'sequence_no' => 'Sequence No',
-            'status' => 'Status',
-            'CB' => 'Cb',
-            'UB' => 'Ub',
-            'DOC' => 'Doc',
-            'DOU' => 'Dou',
-        ];
-    }
+        /**
+         * @inheritdoc
+         */
+        public function rules() {
+                return [
+                        [['transaction', 'prefix', 'sequence_no', 'status', 'CB', 'UB'], 'integer'],
+                        [['transaction'], 'required'],
+                        [['DOC', 'DOU'], 'safe'],
+                ];
+        }
+
+        /**
+         * @inheritdoc
+         */
+        public function attributeLabels() {
+                return [
+                    'id' => 'ID',
+                    'transaction' => 'Transaction',
+                    'prefix' => 'Prefix',
+                    'sequence_no' => 'Sequence No',
+                    'status' => 'Status',
+                    'CB' => 'Cb',
+                    'UB' => 'Ub',
+                    'DOC' => 'Date of Creation',
+                    'DOU' => 'Date of Updation',
+                ];
+        }
+
 }

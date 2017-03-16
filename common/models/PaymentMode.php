@@ -16,44 +16,42 @@ use Yii;
  * @property string $DOC
  * @property string $DOU
  */
-class PaymentMode extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'payment_mode';
-    }
+class PaymentMode extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['name', 'value'], 'required'],
-            [['value'], 'number'],
-            [['status', 'CB', 'UB'], 'integer'],
-            [['DOC', 'DOU'], 'safe'],
-            [['name'], 'string', 'max' => 10],
-        ];
-    }
+        /**
+         * @inheritdoc
+         */
+        public static function tableName() {
+                return 'payment_mode';
+        }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'value' => 'Value',
-            'status' => 'Status',
-            'CB' => 'Cb',
-            'UB' => 'Ub',
-            'DOC' => 'Doc',
-            'DOU' => 'Dou',
-        ];
-    }
+        /**
+         * @inheritdoc
+         */
+        public function rules() {
+                return [
+                        [['name', 'value'], 'required'],
+                        [['value'], 'number'],
+                        [['status', 'CB', 'UB'], 'integer'],
+                        [['DOC', 'DOU'], 'safe'],
+                        [['name'], 'string', 'max' => 10],
+                ];
+        }
+
+        /**
+         * @inheritdoc
+         */
+        public function attributeLabels() {
+                return [
+                    'id' => 'ID',
+                    'name' => 'Name',
+                    'value' => 'Value',
+                    'status' => 'Status',
+                    'CB' => 'Cb',
+                    'UB' => 'Ub',
+                    'DOC' => 'Date of Creation',
+                    'DOU' => 'Date of Updation',
+                ];
+        }
+
 }

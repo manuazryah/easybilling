@@ -5,25 +5,24 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "tax".
+ * This is the model class for table "salesman".
  *
  * @property integer $id
  * @property string $name
- * @property integer $type
- * @property string $value
+ * @property integer $value
  * @property integer $status
  * @property integer $CB
  * @property integer $UB
  * @property string $DOC
  * @property string $DOU
  */
-class Tax extends \yii\db\ActiveRecord {
+class Salesman extends \yii\db\ActiveRecord {
 
         /**
          * @inheritdoc
          */
         public static function tableName() {
-                return 'tax';
+                return 'salesman';
         }
 
         /**
@@ -31,11 +30,10 @@ class Tax extends \yii\db\ActiveRecord {
          */
         public function rules() {
                 return [
-                        [['name', 'type', 'value'], 'required'],
-                        [['type', 'status', 'CB', 'UB'], 'integer'],
-                        [['value'], 'number'],
+                        [['name', 'CB', 'UB'], 'required'],
+                        [['value', 'status', 'CB', 'UB'], 'integer'],
                         [['DOC', 'DOU'], 'safe'],
-                        [['name'], 'string', 'max' => 10],
+                        [['name'], 'string', 'max' => 30],
                 ];
         }
 
@@ -46,7 +44,6 @@ class Tax extends \yii\db\ActiveRecord {
                 return [
                     'id' => 'ID',
                     'name' => 'Name',
-                    'type' => 'Type',
                     'value' => 'Value',
                     'status' => 'Status',
                     'CB' => 'Cb',
