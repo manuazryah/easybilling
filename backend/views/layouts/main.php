@@ -116,6 +116,15 @@ AppAsset::register($this);
                                                                         <?= Html::a('Tax', ['/masters/tax/index'], ['class' => 'title']) ?>
                                                                 </li>
                                                                 <li>
+                                                                        <?= Html::a('Base Unit', ['/masters/base-unit/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                                <li>
+                                                                        <?= Html::a('Payment Mode', ['/masters/payment-mode/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                                <li>
+                                                                        <?= Html::a('Serial Number', ['/masters/serial-number/index'], ['class' => 'title']) ?>
+                                                                </li>
+                                                                <li>
                                                                         <?= Html::a('Country', ['/masters/country/index'], ['class' => 'title']) ?>
                                                                 </li>
                                                                 <li>

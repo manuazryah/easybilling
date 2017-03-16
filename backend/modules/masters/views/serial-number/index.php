@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\TaxSearch */
+/* @var $searchModel common\models\SerialNumberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Taxes';
+$this->title = 'Serial Numbers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tax-index">
+<div class="serial-number-index">
 
         <div class="row">
                 <div class="col-md-12">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="panel-body">
                                         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-                                        <?= Html::a('<i class="fa-th-list"></i><span> Create Tax</span>', ['create'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
+                                        <?= Html::a('<i class="fa-th-list"></i><span> Create Serial Number</span>', ['create'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
                                         <?=
                                         GridView::widget([
                                             'dataProvider' => $dataProvider,
@@ -31,16 +31,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'columns' => [
                                                     ['class' => 'yii\grid\SerialColumn'],
 //                                                            'id',
-                                                'name',
-                                                    [
-                                                    'attribute' => 'type',
+                                                [
+                                                    'attribute' => 'transaction',
                                                     'format' => 'raw',
-                                                    'filter' => [1 => 'Flat', 0 => 'Percentage'],
+                                                    'filter' => ['0' => 'Sales', '1' => 'Credit Note', '2' => 'Receipt'],
                                                     'value' => function ($model) {
-                                                            return $model->type == 1 ? 'Flat' : 'Percentage';
+                                                            if ($model->transaction == 0) {
+                                                                    return 'Sales';
+                                                            } elseif ($model->transaction == 1) {
+                                                                    return 'Credit Note';
+                                                            } elseif ($model->transaction == 2) {
+                                                                    return 'Receipt';
+                                                            }
                                                     },
                                                 ],
-                                                'value',
+                                                'prefix',
+                                                'sequence_no',
                                                     [
                                                     'attribute' => 'status',
                                                     'format' => 'raw',
