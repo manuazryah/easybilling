@@ -77,7 +77,7 @@ AppAsset::register($this);
                                         <ul id="main-menu" class="main-menu">
                                                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                                                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-                                                <li class="active opened active">
+                                                <li class="">
                                                         <a href="">
                                                                 <i class="linecons-cog"></i>
                                                                 <span class="title">Administrator</span>
@@ -94,7 +94,7 @@ AppAsset::register($this);
                                                 </li>
 
 
-                                                <li class="active opened active">
+                                                <li class="">
                                                         <a href="">
                                                                 <i class="fa fa-building-o"></i>
                                                                 <span class="title">Company</span>
@@ -111,8 +111,8 @@ AppAsset::register($this);
                                                                 </li>
                                                         </ul>
                                                 </li>
-                                                
-                                                <li class="active opened active">
+
+                                                <li class="">
                                                         <a href="">
                                                                 <i class="fa fa-suitcase"></i>
                                                                 <span class="title">Product</span>
@@ -124,7 +124,7 @@ AppAsset::register($this);
                                                         </ul>
                                                 </li>
 
-                                                <li class="active opened active">
+                                                <li class="">
                                                         <a href="">
                                                                 <i class="linecons-database"></i>
                                                                 <span class="title">Masters</span>
@@ -688,11 +688,7 @@ AppAsset::register($this);
                                 {
                                         if ($(window).width() < 900) {
                                                 $("#side-menuss").removeClass("collapsed");
-                                        } else {
-
-                                                $("#side-menuss").addClass('collapsed');
                                         }
-                                        ;
 
                                 });
                         </script>
