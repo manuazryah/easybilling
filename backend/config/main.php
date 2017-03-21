@@ -37,6 +37,9 @@ return [
         'product' => [
             'class' => 'backend\modules\product\Module',
         ],
+        'sales' => [
+            'class' => 'backend\modules\sales\Module',
+        ],
     ],
     'components' => [
         'request' => [

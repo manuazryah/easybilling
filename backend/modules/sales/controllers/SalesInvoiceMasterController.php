@@ -1,27 +1,18 @@
 <?php
 
-namespace backend\modules\company\controllers;
+namespace backend\modules\sales\controllers;
 
 use Yii;
-use common\models\Company;
-use common\models\CompanySearch;
+use common\models\SalesInvoiceMaster;
+use common\models\SalesInvoiceMasterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * CompanyController implements the CRUD actions for Company model.
+ * SalesInvoiceMasterController implements the CRUD actions for SalesInvoiceMaster model.
  */
-class CompanyController extends Controller {
-
-        public function init() {
-                if (Yii::$app->user->isGuest)
-                        $this->redirect(['/site/index']);
-
-                if (Yii::$app->session['post']['masters'] != 1)
-                        $this->redirect(['/site/home']);
-        }
+class SalesInvoiceMasterController extends Controller {
 
         /**
          * @inheritdoc
@@ -38,11 +29,11 @@ class CompanyController extends Controller {
         }
 
         /**
-         * Lists all Company models.
+         * Lists all SalesInvoiceMaster models.
          * @return mixed
          */
         public function actionIndex() {
-                $searchModel = new CompanySearch();
+                $searchModel = new SalesInvoiceMasterSearch();
                 $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
                 return $this->render('index', [
@@ -52,7 +43,7 @@ class CompanyController extends Controller {
         }
 
         /**
-         * Displays a single Company model.
+         * Displays a single SalesInvoiceMaster model.
          * @param integer $id
          * @return mixed
          */
@@ -63,21 +54,16 @@ class CompanyController extends Controller {
         }
 
         /**
-         * Creates a new Company model.
+         * Creates a new SalesInvoiceMaster model.
          * If creation is successful, the browser will be redirected to the 'view' page.
          * @return mixed
          */
         public function actionCreate() {
-                $model = new Company();
+                $model = new SalesInvoiceMaster();
 
                 if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model)) {
-                        $filee = UploadedFile::getInstance($model, 'logo');
-                        $model->logo = $filee->extension;
-                        $model->formation_date = $this->ChangeFormat($_POST['formation_date']);
+                        $model->sales_invoice_date = $this->ChangeFormat($_POST['sales_invoice_date']);
                         if ($model->validate() && $model->save()) {
-                                if (isset($filee)) {
-                                        $this->upload($model, $filee);
-                                }
                                 return $this->redirect(['view', 'id' => $model->id]);
                         }
                 }
@@ -87,7 +73,7 @@ class CompanyController extends Controller {
         }
 
         /**
-         * Updates an existing Company model.
+         * Updates an existing SalesInvoiceMaster model.
          * If update is successful, the browser will be redirected to the 'view' page.
          * @param integer $id
          * @return mixed
@@ -96,61 +82,41 @@ class CompanyController extends Controller {
                 $model = $this->findModel($id);
 
                 if ($model->load(Yii::$app->request->post()) && Yii::$app->SetValues->Attributes($model)) {
-                        $filee = UploadedFile::getInstance($model, 'logo');
-                        if (isset($filee)) {
-                                $model->logo = $filee->extension;
-                                $this->upload($model, $filee);
-                        } else {
-                                $photo = Company::findOne($model->id);
-                                $model->logo = $photo->logo;
+                        $model->sales_invoice_date = $this->ChangeFormat($_POST['sales_invoice_date']);
+                        if ($model->validate() && $model->save()) {
+                                return $this->redirect(['view', 'id' => $model->id]);
                         }
-                        $model->formation_date = $this->ChangeFormat($_POST['formation_date']);
-                        $model->save();
-                        return $this->redirect(['view', 'id' => $model->id]);
-                } else {
-                        return $this->render('update', [
-                                    'model' => $model,
-                        ]);
                 }
+                return $this->render('update', [
+                            'model' => $model,
+                ]);
         }
 
         /**
-         * Deletes an existing Company model.
+         * Deletes an existing SalesInvoiceMaster model.
          * If deletion is successful, the browser will be redirected to the 'index' page.
          * @param integer $id
          * @return mixed
          */
         public function actionDelete($id) {
-                $model = $this->findModel($id);
-                $path = Yii::$app->basePath . '/../images/companyImages/' . $model->id . '.' . $model->logo;
-                if (file_exists($path)) {
-                        unlink($path);
-                }
-                $model->delete();
+                $this->findModel($id)->delete();
 
                 return $this->redirect(['index']);
         }
 
         /**
-         * Finds the Company model based on its primary key value.
+         * Finds the SalesInvoiceMaster model based on its primary key value.
          * If the model is not found, a 404 HTTP exception will be thrown.
          * @param integer $id
-         * @return Company the loaded model
+         * @return SalesInvoiceMaster the loaded model
          * @throws NotFoundHttpException if the model cannot be found
          */
         protected function findModel($id) {
-                if (($model = Company::findOne($id)) !== null) {
+                if (($model = SalesInvoiceMaster::findOne($id)) !== null) {
                         return $model;
                 } else {
                         throw new NotFoundHttpException('The requested page does not exist.');
                 }
-        }
-
-        /**
-         * @Upload pro images
-         */
-        public function Upload($model, $filee) {
-                $filee->saveAs(Yii::$app->basePath . '/../images/companyImages/' . $model->id . '.' . $filee->extension);
         }
 
         /*

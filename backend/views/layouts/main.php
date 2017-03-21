@@ -126,6 +126,18 @@ AppAsset::register($this);
 
                                                 <li class="">
                                                         <a href="">
+                                                                <i class="fa fa-file-o"></i>
+                                                                <span class="title">Sales</span>
+                                                        </a>
+                                                        <ul>
+                                                                <li>
+                                                                        <?= Html::a('Invoice', ['/sales/sales-invoice-details/add'], ['class' => 'title']) ?>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+
+                                                <li class="">
+                                                        <a href="">
                                                                 <i class="linecons-database"></i>
                                                                 <span class="title">Masters</span>
                                                         </a>
