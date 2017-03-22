@@ -15,5 +15,8 @@ return [
         'NumToWord' => [
             'class' => 'common\components\NumToWord'
         ],
+        'DropdownWidget' => [
+            'class' => 'common\components\DropdownWidget'
+        ],
     ],
 ];

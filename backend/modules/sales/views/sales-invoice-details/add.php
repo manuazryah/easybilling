@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use yii\db\Expression;
 use kartik\datetime\DateTimePicker;
+use common\components\DropdownWidget;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\EstimatedProforma */
@@ -55,7 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                                         </div>
                                                         <div class='col-md-4 col-sm-6 col-xs-12'>
-                                                                <?= $form->field($model_sales_master, 'busines_partner_code')->textInput(['maxlength' => true]) ?>
+                                                                <?php echo DropdownWidget::widget(['field_name' => 'busines_partner_code','model' => $model_sales_master,'id' => 'salesinvoicemaster-busines_partner_code','name' =>'SalesInvoiceMaster[busines_partner_code]','table_name'=>'BusinessPartner']) ?>
+                                                                <?php // $form->field($model_sales_master, 'busines_partner_code')->textInput(['maxlength' => true]) ?>
 
                                                         </div>
                                                         <div class='col-md-4 col-sm-6 col-xs-12'>

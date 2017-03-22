@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\BusinessPartner;
 
 class AjaxController extends \yii\web\Controller {
 
@@ -65,6 +66,20 @@ class AjaxController extends \yii\web\Controller {
                                 }
                         }
 
+                        echo $options;
+                }
+        }
+
+        public function actionDropdownData() {
+                if (Yii::$app->request->isAjax) {
+//                        $model_name = $_POST['table_name'];
+                        $data_id = $_POST['data_id'];
+                        $datas = BusinessPartner::find()->where(['LIKE', 'name', $data_id])->all();
+                        $options = '<ul style="list-style:none;">';
+                        foreach ($datas as $data) {
+                                $options .= "<li id='autofill-list-item'>" . $data->name . "</li>";
+                        }
+                        $options .= '</ul>';
                         echo $options;
                 }
         }
