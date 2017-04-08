@@ -72,6 +72,42 @@ AppAsset::register($this);
                                                 <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
                                         </header>
 
+                                        <section class="sidebar-user-info">
+                                                <div class="sidebar-user-info-inner">
+                                                        <a href="" class="user-profile">
+                                                                <img src="<?= Yii::$app->homeUrl; ?>images/user-4.png" width="60" height="60" class="img-circle img-corona" alt="user-pic">
+
+                                                                <span>
+                                                                        <strong><?= Yii::$app->session['user_data']['name'] ?></strong>
+                                                                        Administrator
+                                                                </span>
+                                                        </a>
+
+                                                        <ul class="user-links list-unstyled">
+                                                                <li>
+                                                                        <a href="<?= Yii::$app->homeUrl; ?>admin/admin-users/update?id=<?= Yii::$app->user->identity->id ?>" title="Edit profile">
+                                                                                <i class="linecons-user"></i>
+                                                                                Edit profile
+                                                                        </a>
+                                                                </li>
+                                                                <li>
+                                                                        <a href="<?= Yii::$app->homeUrl; ?>admin/admin-users/change-password?id=<?= Yii::$app->user->identity->id ?>" title="Change Password">
+                                                                                <i class="fa-edit"></i>
+                                                                                Password
+                                                                        </a>
+                                                                </li>
+                                                                <?php
+                                                                echo '<li class="logout-link">'
+                                                                . Html::beginForm(['/site/logout'], 'post') . '<a>'
+                                                                . Html::submitButton(
+                                                                        '<i class="fa fa-power-off"></i>', ['class' => 'btn left-slider-linker']
+                                                                ) . '</a>'
+                                                                . Html::endForm();
+                                                                ?>
+                                                        </ul>
+                                                </div>
+                                        </section>
+
 
 
                                         <ul id="main-menu" class="main-menu">
@@ -79,7 +115,7 @@ AppAsset::register($this);
                                                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
                                                 <li class="">
                                                         <a href="">
-                                                                <i class="linecons-cog"></i>
+                                                                <i class="fa fa-cog"></i>
                                                                 <span class="title">Administrator</span>
                                                         </a>
                                                         <ul>
@@ -138,7 +174,7 @@ AppAsset::register($this);
 
                                                 <li class="">
                                                         <a href="">
-                                                                <i class="linecons-database"></i>
+                                                                <i class="fa fa-database"></i>
                                                                 <span class="title">Masters</span>
                                                         </a>
                                                         <ul>

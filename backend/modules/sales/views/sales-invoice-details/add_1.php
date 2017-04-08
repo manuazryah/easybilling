@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
 
-                                        <table cellspacing="0" class="table table-small-font table-bordered table-striped" id="add-invoicee">
+                                        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                                                 <thead>
                                                         <tr>
                                                                 <th data-priority="3">Item</th>
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                 <th data-priority="6">Discount Amount</th>
                                                                 <th data-priority="6">Tax %</th>
                                                                 <th data-priority="6">Amount</th>
-                                                                <!--<th data-priority="1">ACTIONS</th>-->
+                                                                <th data-priority="1">ACTIONS</th>
                                                         </tr>
                                                 </thead>
                                                 <tbody>
@@ -141,12 +141,35 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <td>
                                                         <?= $form->field($model, 'line_total')->textInput(['placeholder' => 'Amount'])->label(false) ?>
                                                 </td>
-<!--                                                <td>
-                                                <?php // Html::submitButton($model->isNewRecord ? 'Add' : 'Update', ['class' => 'btn btn-success', 'name' => 'add']) ?>
-                                                </td>-->
+                                                <td>
+                                                        <?= Html::submitButton($model->isNewRecord ? 'Add' : 'Update', ['class' => 'btn btn-success', 'name' => 'add']) ?>
+                                                </td>
 
 
                                                 </tr>
+                                                <?php
+                                                foreach ($model_temp as $temp) {
+                                                        ?>
+                                                        <tr>
+                                                                <td><?= $temp->item_code ?></td>
+                                                                <td> <?= $temp->qty ?>  </td>
+                                                                <td>
+                                                                        <?php
+                                                                        $item_datas = \common\models\ItemMaster::find()->where(['SKU' => $temp->item_code])->one();
+                                                                        $uom = \common\models\BaseUnit::findOne(['id' => $item_datas->base_unit_id])->name;
+                                                                        ?>
+                                                                        <?= $uom ?>
+                                                                </td>
+                                                                <td><?= $temp->rate ?></td>
+                                                                <td><?= $temp->discount_percentage ?></td>
+                                                                <td><?= $temp->discount_amount ?></td>
+                                                                <td><?= $temp->tax ?></td>
+                                                                <td><?= $temp->line_total ?></td>
+                                                                <td></td>
+                                                        </tr>
+                                                        <?php
+                                                }
+                                                ?>
 
                                                 </tbody>
                                         </table>

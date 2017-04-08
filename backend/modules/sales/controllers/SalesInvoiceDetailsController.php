@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\SalesInvoiceMaster;
+use common\models\BusinessPartner;
+use common\models\SalesInvoiceTemp;
 
 /**
  * SalesInvoiceDetailsController implements the CRUD actions for SalesInvoiceDetails model.
@@ -119,10 +121,58 @@ class SalesInvoiceDetailsController extends Controller {
         public function actionAdd() {
                 $model = new SalesInvoiceDetails();
                 $model_sales_master = new SalesInvoiceMaster();
+                $model_temp = SalesInvoiceTemp::find()->where(['status' => 1])->all();
+                if ($model->load(Yii::$app->request->post())) {
+                        $model->tax_id = $_POST['tax-type'];
+                        $this->addTemperory($model);
+                        return $this->redirect(Yii::$app->request->referrer);
+                }
                 return $this->render('add', [
                             'model' => $model,
                             'model_sales_master' => $model_sales_master,
+                            'model_temp' => $model_temp,
                 ]);
+        }
+
+        public function addTemperory($model) {
+                $model_temp = new SalesInvoiceTemp();
+                $model_temp->item_code = $model->item_code;
+                $model_temp->qty = $model->qty;
+                $model_temp->rate = $model->rate;
+                $model_temp->discount_percentage = $model->discount_percentage;
+                $model_temp->discount_amount = $model->discount_amount;
+                $model_temp->tax = $model->tax_percentage;
+                $model_temp->tax_id = $model->tax_id;
+                $model_temp->line_total = $model->line_total;
+                Yii::$app->SetValues->Attributes($model_temp);
+                $model_temp->save();
+                return TRUE;
+        }
+
+        /**
+         * Finds the Business Partner name.
+         * @return businee partner names as array
+         */
+        public function getPartner() {
+                $partner = BusinessPartner::find()->where(['status' => 1])->all();
+                $source;
+                foreach ($partner as $value) {
+                        $source[] = $value->name;
+                }
+                return $source;
+        }
+
+        /**
+         * Finds the item Code(SKU).
+         * @return item Code(SKU) as array
+         */
+        public function getItemName() {
+                $items = \common\models\ItemMaster::find()->where(['status' => 1])->all();
+                $source;
+                foreach ($items as $value) {
+                        $source[] = $value->SKU;
+                }
+                return $source;
         }
 
 }

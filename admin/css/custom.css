@@ -164,3 +164,11 @@ table.table tr td:last-child a {
         font-weight: bold;
         color: black;
 }
+.left-slider-linker{
+        background: transparent !important;
+        padding-top: 12px;
+}
+.left-slider-linker:hover{
+        color:white !important;
+        background: transparent;
+}

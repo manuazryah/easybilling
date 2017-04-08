@@ -120,4 +120,13 @@ return array (
       '@kartik/date' => $vendorDir . '/kartik-v/yii2-widget-datepicker',
     ),
   ),
+  'yiisoft/yii2-jui' => 
+  array (
+    'name' => 'yiisoft/yii2-jui',
+    'version' => '2.0.6.0',
+    'alias' => 
+    array (
+      '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
+    ),
+  ),
 );

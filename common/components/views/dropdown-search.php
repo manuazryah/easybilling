@@ -1,14 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-
-?>
-<?php
-//echo $table_name;
-//exit;
 ?>
 
-<div class="form-group">
+
+<div class="form-group field-<?= $id ?>">
         <label class="control-label" for=""><?= $model->getAttributeLabel($field_name); ?></label>
         <input type="text" id="<?= $id ?>" class="form-control" name="<?= $name ?>" maxlength="15" aria-invalid="false">
         <div id="autofill-<?= $id ?>"></div>
