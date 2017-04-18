@@ -40,7 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             return $model->type == 1 ? 'Supplier' : 'Customer';
                                                     },
                                                 ],
-                                                'name',
                                                 'phone',
                                                 'email:email',
                                                 // 'city',

@@ -10,24 +10,22 @@ use common\models\Salesman;
 /**
  * SalesmanSearch represents the model behind the search form about `common\models\Salesman`.
  */
-class SalesmanSearch extends Salesman
-{
+class SalesmanSearch extends Salesman {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'value', 'status', 'CB', 'UB'], 'integer'],
-            [['name', 'DOC', 'DOU'], 'safe'],
+            [['id', 'status', 'CB', 'UB', 'type'], 'integer'],
+            [['name', 'DOC', 'DOU', 'value'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class SalesmanSearch extends Salesman
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Salesman::find();
 
         // add conditions that should always apply here
@@ -60,16 +57,18 @@ class SalesmanSearch extends Salesman
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'value' => $this->value,
             'status' => $this->status,
+            'type' => $this->type,
             'CB' => $this->CB,
             'UB' => $this->UB,
             'DOC' => $this->DOC,
             'DOU' => $this->DOU,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+                ->andFilterWhere(['like', 'value', $this->value]);
 
         return $dataProvider;
     }
+
 }

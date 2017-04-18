@@ -10,24 +10,22 @@ use common\models\BusinessPartner;
 /**
  * BusinessPartnerSearch represents the model behind the search form about `common\models\BusinessPartner`.
  */
-class BusinessPartnerSearch extends BusinessPartner
-{
+class BusinessPartnerSearch extends BusinessPartner {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'type', 'phone', 'city', 'status', 'CB', 'UB'], 'integer'],
-            [['name', 'email', 'DOC', 'DOU'], 'safe'],
+            [['id', 'type', 'phone', 'status', 'CB', 'UB'], 'integer'],
+            [['name', 'email', 'DOC', 'DOU', 'city'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class BusinessPartnerSearch extends BusinessPartner
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = BusinessPartner::find();
 
         // add conditions that should always apply here
@@ -71,8 +68,9 @@ class BusinessPartnerSearch extends BusinessPartner
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'email', $this->email]);
+                ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }
+
 }

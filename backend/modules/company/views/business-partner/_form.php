@@ -12,39 +12,39 @@ use common\models\City;
 
 <div class="business-partner-form form-inline">
 
-        <?php $form = ActiveForm::begin(); ?>
-        <?php
-        $city = ArrayHelper::map(City::find()->where(['status' => 1])->all(), 'id', 'city_name');
-        ?>
+    <?php $form = ActiveForm::begin(); ?>
+    <?php
+    $city = ArrayHelper::map(City::find()->where(['status' => 1])->all(), 'id', 'city_name');
+    ?>
 
-        <div class='col-md-4 col-sm-6 col-xs-12'>    
-                <?= $form->field($model, 'type')->dropDownList(['0' => 'Customer', '1' => 'Supplier']) ?>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'type')->dropDownList(['0' => 'Customer', '1' => 'Supplier'], ['prompt' => 'Select Partner Type']) ?>
 
-        </div>
-        <div class='col-md-4 col-sm-6 col-xs-12'>    
-                <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-        </div>
-        <div class='col-md-4 col-sm-6 col-xs-12'>    
-                <?= $form->field($model, 'phone')->textInput() ?>
+    </div>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'phone')->textInput() ?>
 
-        </div>
-        <div class='col-md-4 col-sm-6 col-xs-12'>    
-                <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-        </div>
-        <div class='col-md-4 col-sm-6 col-xs-12'>   
-                <?= $form->field($model, 'city')->dropDownList($city, ['prompt' => '-Choose City-']) ?>
+    </div>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
 
-        </div>
-        <div class='col-md-4 col-sm-6 col-xs-12'>    
-                <?= $form->field($model, 'status')->dropDownList(['1' => 'Enabled', '0' => 'Disabled']) ?>
+    </div>
+    <div class='col-md-4 col-sm-6 col-xs-12'>
+        <?= $form->field($model, 'status')->dropDownList(['1' => 'Enabled', '0' => 'Disabled']) ?>
 
-        </div>
-        <div class="form-group" style="float: right;">
-                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'style' => 'margin-top: 18px; height: 36px; width:100px;']) ?>
-        </div>
+    </div>
+    <div class="form-group" style="float: right;">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'style' => 'margin-top: 18px; height: 36px; width:100px;']) ?>
+    </div>
 
-        <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

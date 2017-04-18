@@ -10,24 +10,22 @@ use common\models\Company;
 /**
  * CompanySearch represents the model behind the search form about `common\models\Company`.
  */
-class CompanySearch extends Company
-{
+class CompanySearch extends Company {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'city', 'state', 'country', 'status', 'CB', 'UB'], 'integer'],
-            [['name', 'formation_date', 'currency', 'tin', 'cst', 'gst', 'pan', 'cin', 'address1', 'address2', 'postal_code', 'phone', 'mobile', 'email', 'web', 'logo', 'note', 'DOC', 'DOU'], 'safe'],
+            [['id', 'country', 'status', 'CB', 'UB'], 'integer'],
+            [['name', 'formation_date', 'currency', 'tin', 'cst', 'gst', 'pan', 'cin', 'address1', 'address2', 'postal_code', 'phone', 'mobile', 'email', 'web', 'logo', 'note', 'DOC', 'DOU', 'city', 'state'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class CompanySearch extends Company
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Company::find();
 
         // add conditions that should always apply here
@@ -71,23 +68,24 @@ class CompanySearch extends Company
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'formation_date', $this->formation_date])
-            ->andFilterWhere(['like', 'currency', $this->currency])
-            ->andFilterWhere(['like', 'tin', $this->tin])
-            ->andFilterWhere(['like', 'cst', $this->cst])
-            ->andFilterWhere(['like', 'gst', $this->gst])
-            ->andFilterWhere(['like', 'pan', $this->pan])
-            ->andFilterWhere(['like', 'cin', $this->cin])
-            ->andFilterWhere(['like', 'address1', $this->address1])
-            ->andFilterWhere(['like', 'address2', $this->address2])
-            ->andFilterWhere(['like', 'postal_code', $this->postal_code])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'mobile', $this->mobile])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'web', $this->web])
-            ->andFilterWhere(['like', 'logo', $this->logo])
-            ->andFilterWhere(['like', 'note', $this->note]);
+                ->andFilterWhere(['like', 'formation_date', $this->formation_date])
+                ->andFilterWhere(['like', 'currency', $this->currency])
+                ->andFilterWhere(['like', 'tin', $this->tin])
+                ->andFilterWhere(['like', 'cst', $this->cst])
+                ->andFilterWhere(['like', 'gst', $this->gst])
+                ->andFilterWhere(['like', 'pan', $this->pan])
+                ->andFilterWhere(['like', 'cin', $this->cin])
+                ->andFilterWhere(['like', 'address1', $this->address1])
+                ->andFilterWhere(['like', 'address2', $this->address2])
+                ->andFilterWhere(['like', 'postal_code', $this->postal_code])
+                ->andFilterWhere(['like', 'phone', $this->phone])
+                ->andFilterWhere(['like', 'mobile', $this->mobile])
+                ->andFilterWhere(['like', 'email', $this->email])
+                ->andFilterWhere(['like', 'web', $this->web])
+                ->andFilterWhere(['like', 'logo', $this->logo])
+                ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
     }
+
 }

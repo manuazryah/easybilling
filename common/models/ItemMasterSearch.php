@@ -10,25 +10,23 @@ use common\models\ItemMaster;
 /**
  * ItemMasterSearch represents the model behind the search form about `common\models\ItemMaster`.
  */
-class ItemMasterSearch extends ItemMaster
-{
+class ItemMasterSearch extends ItemMaster {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'item_type', 'tax_id', 'base_unit_id', 'status', 'CB', 'UB'], 'integer'],
             [['SKU', 'item_name', 'DOC', 'DOU'], 'safe'],
-            [['MRP', 'retail_price', 'purchase_prce', 'item_cost'], 'number'],
+            [['MRP', 'retail_price', 'purchase_price', 'item_cost', 'whole_sale_price'], 'number'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,8 +38,7 @@ class ItemMasterSearch extends ItemMaster
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = ItemMaster::find();
 
         // add conditions that should always apply here
@@ -66,7 +63,8 @@ class ItemMasterSearch extends ItemMaster
             'base_unit_id' => $this->base_unit_id,
             'MRP' => $this->MRP,
             'retail_price' => $this->retail_price,
-            'purchase_prce' => $this->purchase_prce,
+            'whole_sale_price' => $this->whole_sale_price,
+            'purchase_price' => $this->purchase_price,
             'item_cost' => $this->item_cost,
             'status' => $this->status,
             'CB' => $this->CB,
@@ -76,8 +74,9 @@ class ItemMasterSearch extends ItemMaster
         ]);
 
         $query->andFilterWhere(['like', 'SKU', $this->SKU])
-            ->andFilterWhere(['like', 'item_name', $this->item_name]);
+                ->andFilterWhere(['like', 'item_name', $this->item_name]);
 
         return $dataProvider;
     }
+
 }

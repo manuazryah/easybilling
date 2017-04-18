@@ -36,62 +36,62 @@ use Yii;
  */
 class Company extends \yii\db\ActiveRecord {
 
-        /**
-         * @inheritdoc
-         */
-        public static function tableName() {
-                return 'company';
-        }
+    /**
+     * @inheritdoc
+     */
+    public static function tableName() {
+        return 'company';
+    }
 
-        /**
-         * @inheritdoc
-         */
-        public function rules() {
-                return [
-                        [['name'], 'required'],
-                        [['address1', 'address2'], 'string'],
-                        [['city', 'state', 'country', 'status', 'CB', 'UB'], 'integer'],
-                        [['DOC', 'DOU'], 'safe'],
-                        [['email'], 'email'],
-                        [['name', 'formation_date', 'currency', 'tin', 'cst', 'pan', 'cin', 'postal_code'], 'string', 'max' => 30],
-                        [['gst', 'phone', 'mobile'], 'string', 'max' => 15],
-                        [['email', 'logo', 'note'], 'string', 'max' => 50],
-                        [['web'], 'string', 'max' => 100],
-                ];
-        }
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+//            [['name'], 'required'],
+            [['address1', 'address2'], 'string'],
+            [['country', 'status', 'CB', 'UB'], 'integer'],
+            [['DOC', 'DOU', 'user_id'], 'safe'],
+            [['email'], 'email'],
+            [['name', 'formation_date', 'currency', 'tin', 'cst', 'pan', 'cin', 'postal_code'], 'string', 'max' => 30],
+            [['gst', 'phone', 'mobile'], 'string', 'max' => 15],
+            [['email', 'logo', 'note'], 'string', 'max' => 50],
+            [['city', 'state', 'web'], 'string', 'max' => 100],
+        ];
+    }
 
-        /**
-         * @inheritdoc
-         */
-        public function attributeLabels() {
-                return [
-                    'id' => 'ID',
-                    'name' => 'Name',
-                    'formation_date' => 'Formation Date',
-                    'currency' => 'Currency',
-                    'tin' => 'TIN',
-                    'cst' => 'CST',
-                    'gst' => 'GST',
-                    'pan' => 'PAN',
-                    'cin' => 'CIN',
-                    'address1' => 'Address1',
-                    'address2' => 'Address2',
-                    'city' => 'City',
-                    'state' => 'State',
-                    'country' => 'Country',
-                    'postal_code' => 'Postal Code',
-                    'phone' => 'Phone',
-                    'mobile' => 'Mobile',
-                    'email' => 'Email',
-                    'web' => 'Web',
-                    'logo' => 'Logo',
-                    'note' => 'Note',
-                    'status' => 'Status',
-                    'CB' => 'Cb',
-                    'UB' => 'Ub',
-                    'DOC' => 'Date of Creation',
-                    'DOU' => 'Date of Updation',
-                ];
-        }
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels() {
+        return [
+            'id' => 'ID',
+            'name' => 'Name',
+            'formation_date' => 'Formation Date',
+            'currency' => 'Currency',
+            'tin' => 'TIN',
+            'cst' => 'CST',
+            'gst' => 'GST',
+            'pan' => 'PAN',
+            'cin' => 'CIN',
+            'address1' => 'Address1',
+            'address2' => 'Address2',
+            'city' => 'City',
+            'state' => 'State',
+            'country' => 'Country',
+            'postal_code' => 'Postal Code',
+            'phone' => 'Phone',
+            'mobile' => 'Mobile',
+            'email' => 'Email',
+            'web' => 'Web',
+            'logo' => 'Logo',
+            'note' => 'Note',
+            'status' => 'Status',
+            'CB' => 'Cb',
+            'UB' => 'Ub',
+            'DOC' => 'Date of Creation',
+            'DOU' => 'Date of Updation',
+        ];
+    }
 
 }

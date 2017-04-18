@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\BusinessPartner;
+use yii\helpers\Json;
 
 class AjaxController extends \yii\web\Controller {
 
@@ -81,6 +82,28 @@ class AjaxController extends \yii\web\Controller {
                         }
                         $options .= '</ul>';
                         echo $options;
+                }
+        }
+
+        public function actionItemName() {
+                if (Yii::$app->request->isAjax) {
+                        $data_char = $_POST['item'];
+                        if (!empty($data_char)) {
+                                $result = \common\models\ItemMaster::find()->where(['LIKE', 'SKU', $data_char])->all();
+                                if (!empty($result)) {
+                                        ?>
+                                        <ul id="country-list">
+                                                <?php
+                                                foreach ($result as $item) {
+                                                        ?>
+                                                        <li onClick="selectCountry('<?php echo $item->SKU; ?>');" style="list-style: none;"><?php echo $item->SKU; ?></li>
+                                                        <?php } ?>
+                                        </ul>
+                                        <?php
+                                }
+                        } else {
+                                echo '';
+                        }
                 }
         }
 
