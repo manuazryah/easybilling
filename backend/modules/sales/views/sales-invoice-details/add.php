@@ -40,12 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <label class="control-label control-label1" for="formation-date" >Sales Invoice Date</label>
                                 <input type="text" class="form-control"  data-mask="datetime"name="sales_invoice_date" value="<?= $current_date ?>"/>
                             </div>
-                            
-<!--                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <label class="control-label control-label1" for="formation-date" >Sales Invoice Date</label>
-                                <input type="text" class="form-control" data-mask="datetime" name="sales_invoice_date" value="2303-2017 03:31">
-                                <input type="datetime-local" id="w1" class="form-control" name="sales_invoice_date" value="23/03/2017 03:31" data-krajee-datetimepicker="datetimepicker_1b78f15e">
-                            </div>-->
+
+                            <!--                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                            <label class="control-label control-label1" for="formation-date" >Sales Invoice Date</label>
+                                                            <input type="text" class="form-control" data-mask="datetime" name="sales_invoice_date" value="2303-2017 03:31">
+                                                            <input type="datetime-local" id="w1" class="form-control" name="sales_invoice_date" value="23/03/2017 03:31" data-krajee-datetimepicker="datetimepicker_1b78f15e">
+                                                        </div>-->
 
                             <!--<div class='col-md-4 col-sm-6 col-xs-12'>-->
                             <?php
@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= $form->field($model_sales_master, 'sales_invoice_number')->textInput(['maxlength' => true]) ?>
 
                             </div>
-                            
+
                             <div class='col-md-4 col-sm-6 col-xs-12'>
 
                                 <?=
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $default_salesman = \common\models\Salesman::findOne(['type' => 1])->name;
                                 ?>
                                 <?=
-                                $form->field($model_sales_master, 'salesman')->widget(\yii\jui\AutoComplete::classname(), ['options' => ['class' => 'ui-autocomplete-input form-control','value' => (!empty($default_salesman) ? $default_salesman : '')],
+                                $form->field($model_sales_master, 'salesman')->widget(\yii\jui\AutoComplete::classname(), ['options' => ['class' => 'ui-autocomplete-input form-control', 'value' => (!empty($default_salesman) ? $default_salesman : '')],
                                     'value' => 'Manu',
                                     'clientOptions' => [
                                         'source' => $this->context->getSalesman(),
@@ -335,4 +335,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/invoice.js"></script>
 </div>
 <!-- Imported scripts on this page -->
-	<script src="<?= Yii::$app->homeUrl ?>js/inputmask/jquery.inputmask.bundle.js"></script>
+<script src="<?= Yii::$app->homeUrl ?>js/inputmask/jquery.inputmask.bundle.js"></script>

@@ -135,6 +135,25 @@ class SalesInvoiceDetailsController extends Controller {
         ]);
     }
 
+    public function SaveSalesMaster($model_sales_master, $data) {
+        $model_sales_master->sales_invoice_number = $data['SalesInvoiceMaster']['sales_invoice_number'];
+        $model_sales_master->sales_invoice_date = date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $data['sales_invoice_date'])));
+        $model_sales_master->busines_partner_code = $data['SalesInvoiceDetails']['busines_partner_code'];
+        $model_sales_master->salesman = $data['SalesInvoiceMaster']['salesman'];
+        $model_sales_master->delivery_terms = $data['SalesInvoiceMaster']['delivery_terms'];
+        $model_sales_master->payment_terms = $data['SalesInvoiceMaster']['payment_terms'];
+        $model_sales_master->payment_status = $data['SalesInvoiceMaster']['payment_status'];
+        $model_sales_master->amount = $data['SalesInvoiceMaster']['amount'];
+        $model_sales_master->tax_amount = $data['tax_sub_total'];
+        $model_sales_master->order_amount = $data['order_sub_total'];
+        $model_sales_master->amount_payed = $data['payed_amount'];
+        $model_sales_master->due_amount = $data['balance'];
+        $model_sales_master->status = 1;
+        Yii::$app->SetValues->Attributes($model_sales_master);
+        $model_sales_master->save();
+        return $model_sales_master;
+    }
+
     public function SaveSalesDetails($model_sales_master, $data) {
         $arr = [];
         $i = 0;
@@ -214,25 +233,6 @@ class SalesInvoiceDetailsController extends Controller {
             if (!empty($aditional->item_code))
                 $aditional->save();
         }
-    }
-
-    public function SaveSalesMaster($model_sales_master, $data) {
-        $model_sales_master->sales_invoice_number = $data['SalesInvoiceMaster']['sales_invoice_number'];
-        $model_sales_master->sales_invoice_date = date("Y-m-d h:i", strtotime($data['sales_invoice_date']));
-        $model_sales_master->busines_partner_code = $data['SalesInvoiceDetails']['busines_partner_code'];
-        $model_sales_master->salesman = $data['SalesInvoiceMaster']['salesman'];
-        $model_sales_master->delivery_terms = $data['SalesInvoiceMaster']['delivery_terms'];
-        $model_sales_master->payment_terms = $data['SalesInvoiceMaster']['payment_terms'];
-        $model_sales_master->payment_status = $data['SalesInvoiceMaster']['payment_status'];
-        $model_sales_master->amount = $data['SalesInvoiceMaster']['amount'];
-        $model_sales_master->tax_amount = $data['tax_sub_total'];
-        $model_sales_master->order_amount = $data['order_sub_total'];
-        $model_sales_master->amount_payed = $data['payed_amount'];
-        $model_sales_master->due_amount = $data['balance'];
-        $model_sales_master->status = 1;
-        Yii::$app->SetValues->Attributes($model_sales_master);
-        $model_sales_master->save();
-        return $model_sales_master;
     }
 
     public function addTemperory($model) {
