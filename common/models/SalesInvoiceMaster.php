@@ -32,25 +32,23 @@ use Yii;
  *
  * @property SalesInvoiceDetails[] $salesInvoiceDetails
  */
-class SalesInvoiceMaster extends \yii\db\ActiveRecord
-{
+class SalesInvoiceMaster extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'sales_invoice_master';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['sales_invoice_date', 'DOC', 'DOU'], 'safe'],
             [['order_type', 'payment_status', 'status', 'CB', 'UB'], 'integer'],
-            [['amount', 'tax_amount', 'order_amount', 'amount_payed', 'due_amount'], 'number'],
+            [['amount', 'tax_amount', 'order_amount', 'amount_payed', 'due_amount', 'card_amount', 'cash_amount', 'round_of_amount'], 'number'],
             [['CB', 'UB'], 'required'],
             [['sales_invoice_number', 'ship_to_adress', 'reference', 'error_message'], 'string', 'max' => 50],
             [['busines_partner_code'], 'string', 'max' => 15],
@@ -61,8 +59,7 @@ class SalesInvoiceMaster extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'sales_invoice_number' => 'Sales Invoice Number',
@@ -92,8 +89,8 @@ class SalesInvoiceMaster extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSalesInvoiceDetails()
-    {
+    public function getSalesInvoiceDetails() {
         return $this->hasMany(SalesInvoiceDetails::className(), ['sales_invoice_master_id' => 'id']);
     }
+
 }

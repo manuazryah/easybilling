@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\SalesInvoiceMaster;
+use common\models\SalesInvoiceMasterSearch;
 use common\models\BusinessPartner;
 use common\models\SalesInvoiceTemp;
 
@@ -36,7 +37,7 @@ class SalesInvoiceDetailsController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new SalesInvoiceDetailsSearch();
+        $searchModel = new SalesInvoiceMasterSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -51,8 +52,11 @@ class SalesInvoiceDetailsController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
+        $model = SalesInvoiceMaster::findOne(['id' => $id]);
+        $sales_details = SalesInvoiceDetails::findAll(['sales_invoice_master_id' => $id]);
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
+                    'sales_details' => $sales_details,
         ]);
     }
 
@@ -146,6 +150,9 @@ class SalesInvoiceDetailsController extends Controller {
         $model_sales_master->amount = $data['SalesInvoiceMaster']['amount'];
         $model_sales_master->tax_amount = $data['tax_sub_total'];
         $model_sales_master->order_amount = $data['order_sub_total'];
+        $model_sales_master->cash_amount = $data['cash_amount'];
+        $model_sales_master->card_amount = $data['card_amount'];
+        $model_sales_master->round_of_amount = $data['round_of'];
         $model_sales_master->amount_payed = $data['payed_amount'];
         $model_sales_master->due_amount = $data['balance'];
         $model_sales_master->status = 1;
@@ -235,19 +242,18 @@ class SalesInvoiceDetailsController extends Controller {
         }
     }
 
-    public function addTemperory($model) {
-        $model_temp = new SalesInvoiceTemp();
-        $model_temp->item_code = $model->item_code;
-        $model_temp->qty = $model->qty;
-        $model_temp->rate = $model->rate;
-        $model_temp->discount_percentage = $model->discount_percentage;
-        $model_temp->discount_amount = $model->discount_amount;
-        $model_temp->tax = $model->tax_percentage;
-        $model_temp->tax_id = $model->tax_id;
-        $model_temp->line_total = $model->line_total;
-        Yii::$app->SetValues->Attributes($model_temp);
-        $model_temp->save();
-        return TRUE;
+    public function actionReport($id) {
+        $sales_master = SalesInvoiceMaster::findOne(['id' => $id]);
+        $sales_details = SalesInvoiceDetails::findAll(['sales_invoice_master_id' => $sales_master->id]);
+        $company_details = \common\models\Company::findOne(['user_id' => Yii::$app->user->identity->id]);
+
+        echo $this->renderPartial('sales_report', [
+            'sales_master' => $sales_master,
+            'sales_details' => $sales_details,
+            'company_details' => $company_details,
+            'print' => true,
+        ]);
+        exit;
     }
 
     /**

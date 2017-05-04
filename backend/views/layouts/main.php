@@ -170,7 +170,8 @@ AppAsset::register($this);
                             </a>
                             <ul>
                                 <li>
-                                    <?= Html::a('Invoice', ['/sales/sales-invoice-details/add'], ['class' => 'title']) ?>
+                                    <?= Html::a('Create Invoice', ['/sales/sales-invoice-details/add'], ['class' => 'title']) ?>
+                                    <?= Html::a('List Invoice', ['/sales/sales-invoice-details/index'], ['class' => 'title']) ?>
                                 </li>
                             </ul>
                         </li>
