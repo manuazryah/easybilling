@@ -94,8 +94,8 @@ $(document).ready(function () {
     });
 
     $('#add-invoicee').on('click', '#del', function () {
-        var bid = this.id; // button ID 
-        var trid = $(this).closest('tr').attr('id'); // table row ID 
+        var bid = this.id; // button ID
+        var trid = $(this).closest('tr').attr('id'); // table row ID
         $(this).closest('tr').remove();
         calculateSubtotal();
     });
@@ -118,7 +118,7 @@ function balanceCalculation() {
             round_of_amount = 0;
         }
         var order_balance = order_amount - (parseFloat(cash_amount) + parseFloat(card_amount) + parseFloat(round_of_amount));
-        $('#payed_amount').val(parseFloat(cash_amount) + parseFloat(card_amount) + parseFloat(round_of_amount));
+        $('#payed_amount').val(parseFloat(cash_amount) + parseFloat(card_amount));
         $('#balance').val(order_balance);
     }
 }
@@ -220,5 +220,7 @@ function calculateSubtotal() {
     $('#tax_sub_total').val(parseFloat(tax_sub_total));
     $('#order_sub_total').val(parseFloat(order_sub_total));
     $('#salesinvoicemaster-amount').val(parseFloat(sub_total));
+    $('#salesreturninvoicemaster-amount').val(parseFloat(sub_total));
+    balanceCalculation();
 }
 

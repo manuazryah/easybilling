@@ -37,36 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             $current_date = date("d-m-Y h:i");
                             ?>
                             <div class="col-md-4 col-sm-6 col-xs-12">
-                                <label class="control-label control-label1" for="formation-date" >Sales Invoice Date</label>
+                                <label class="control-label control-label1" for="formation-date" >Sales Return Date</label>
                                 <input type="text" class="form-control"  data-mask="datetime"name="sales_invoice_date" value="<?= $current_date ?>"/>
                             </div>
 
-                            <!--                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                                            <label class="control-label control-label1" for="formation-date" >Sales Invoice Date</label>
-                                                            <input type="text" class="form-control" data-mask="datetime" name="sales_invoice_date" value="2303-2017 03:31">
-                                                            <input type="datetime-local" id="w1" class="form-control" name="sales_invoice_date" value="23/03/2017 03:31" data-krajee-datetimepicker="datetimepicker_1b78f15e">
-                                                        </div>-->
-
-                            <!--<div class='col-md-4 col-sm-6 col-xs-12'>-->
-                            <?php
-//                                                                echo '<label class="control-label control-label1" for="formation-date">Sales Invoice Date</label>';
-//                                                                if (!$model_sales_master->isNewRecord) {
-//                                                                        $model_sales_master->sales_invoice_date = date('d-m-Y h:i', strtotime($model_sales_master->sales_invoice_date));
-//                                                                } else {
-//                                                                        $model_sales_master->sales_invoice_date = date('d-m-Y h:i');
-//                                                                }
-//                                                                echo DateTimePicker::widget([
-//                                                                    'name' => 'sales_invoice_date',
-//                                                                    'type' => DateTimePicker::TYPE_INPUT,
-//                                                                    'value' => $model_sales_master->sales_invoice_date,
-//                                                                    'pluginOptions' => [
-//                                                                        'autoclose' => true,
-//                                                                        'format' => 'dd-M-yyyy hh:ii'
-//                                                                    ]
-//                                                                ]);
-                            ?>
-
-                            <!--</div>-->
                             <div class='col-md-4 col-sm-6 col-xs-12'>
                                 <?= $form->field($model_sales_master, 'sales_invoice_number')->textInput(['maxlength' => true]) ?>
 
@@ -206,7 +180,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                         </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -255,7 +228,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <td>Card</td>
                                         <td><input type="text" id="card_amount" name="card_amount" style="width: 100%;"/></td>
                                     </tr>
-                                    
                                     <tr>
                                         <td>Amount Payed</td>
                                         <td><input type="text" id="payed_amount" name="payed_amount" style="width: 100%;" readonly/></td></td>

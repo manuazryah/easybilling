@@ -171,7 +171,15 @@ AppAsset::register($this);
                             <ul>
                                 <li>
                                     <?= Html::a('Create Invoice', ['/sales/sales-invoice-details/add'], ['class' => 'title']) ?>
-                                    <?= Html::a('List Invoice', ['/sales/sales-invoice-details/index'], ['class' => 'title']) ?>
+                                </li>
+                                <li>
+                                     <?= Html::a('List Invoice', ['/sales/sales-invoice-details/index'], ['class' => 'title']) ?>
+                                </li>
+                                <li>
+                                    <?= Html::a('Return Invoice', ['/sales/sales-return-invoice-details/add'], ['class' => 'title']) ?>
+                                </li>
+                                <li>
+                                     <?= Html::a('List Return Invoice', ['/sales/sales-return-invoice-details/index'], ['class' => 'title']) ?>
                                 </li>
                             </ul>
                         </li>

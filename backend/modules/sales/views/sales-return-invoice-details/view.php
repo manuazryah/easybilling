@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-Use common\models\BaseUnit;
+use common\models\BaseUnit;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\SalesInvoiceDetails */
+/* @var $model common\models\SalesReturnInvoiceDetails */
 
 $this->title = $model->sales_invoice_number;
-$this->params['breadcrumbs'][] = ['label' => 'Sales Invoice Details', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Sales Return Invoice Details', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
@@ -54,10 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             </div>
             <div class="panel-body">
-                <?= Html::a('<i class="fa-th-list"></i><span> Manage Sales Invoice Details</span>', ['index'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
+                <?= Html::a('<i class="fa-th-list"></i><span> Manage Sales Return Details</span>', ['index'], ['class' => 'btn btn-warning  btn-icon btn-icon-standalone']) ?>
                 <div class="panel-body">
                     <div class="sales-master table-responsive">
-                        <h4>Sales Item Master</h4>
+                        <h4>Sales Return Master</h4>
                         <table class="appoint">
                             <tr>
                                 <td class="labell">Sales Invoice Number </td><td class="colen">:</td><td class="value"> <?= $model->sales_invoice_number; ?></td>
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </table>
                     </div>
                     <div class="sales-details">
-                        <h4>Sales Item Details</h4>
+                        <h4>Sales Return Details</h4>
                         <table class="table table-bordered">
                             <tr>
                                 <th>Item Name</th>
@@ -144,5 +144,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
-
