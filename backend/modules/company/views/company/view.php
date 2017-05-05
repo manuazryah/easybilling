@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attribute' => 'logo',
                                     'format' => 'raw',
                                     'value' => call_user_func(function($model) {
-                                                return '<img width="120px" height="100px" src="' . Yii::$app->homeUrl . '../images/companyImages/' . $model->id . '.' . $model->logo . '"/>';
+                                                return '<img width="120px" height="100px" src="' . Yii::$app->homeUrl . 'images/companyImages/' . $model->id . '.' . $model->logo . '"/>';
                                             }, $model),
                                 ],
                                 [

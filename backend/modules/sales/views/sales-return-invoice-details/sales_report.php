@@ -16,7 +16,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title></title>-->
 <div id="print">
-    <link rel="stylesheet" href="<?= Yii::$app->homeUrl ?>/css/invoice.css">
+    <link rel="stylesheet" href="<?= Yii::$app->homeUrl ?>css/invoice.css">
     <style type="text/css">
 
         @media print {
@@ -73,7 +73,7 @@ and open the template in the editor.
                             <h2>BILLING INVOICE</h2>
                         </div>
                         <div class="main-right">
-                            <img src="<?= Yii::$app->homeUrl ?>../images/companyImages/<?= $company_details->id ?>.<?= $company_details->logo ?>" style="width: 90px;height: 75px;"/>
+                            <img src="<?= Yii::$app->homeUrl ?>images/companyImages/<?= $company_details->id ?>.<?= $company_details->logo ?>" style="width: 90px;height: 75px;"/>
                         </div>
                         <br/>
                     </div>

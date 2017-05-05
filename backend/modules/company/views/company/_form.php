@@ -129,7 +129,7 @@ use kartik\datetime\DateTimePicker;
     else {
         ?>
         <div class='col-md-4 col-sm-6 col-xs-12'>
-            <img src="<?= Yii::$app->homeUrl ?>../images/companyImages/<?= $model->id ?>.<?= $model->logo; ?>" width="75" height="75"/>
+            <img src="<?= Yii::$app->homeUrl ?>images/companyImages/<?= $model->id ?>.<?= $model->logo; ?>" width="75" height="75"/>
         </div>
         <?php
     }
